@@ -11,7 +11,8 @@ var methodOverride = require('method-override');
 // CONFIG
 // ==========
 var app = express();
-mongoose.connect('mongodb://localhost/blog');
+var databaseURL = process.env.DB || 'mongodb://localhost/blog';
+mongoose.connect(databaseURL);
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));

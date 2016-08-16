@@ -20,13 +20,13 @@ var User = require('./models/user');
 // CONFIG
 // ==========
 var app = express();
-// var databaseURL = process.env.DB || 'mongodb://localhost/blog';
+var databaseURL = process.env.DB || 'mongodb://localhost/blog';
 app.use(require('express-session')({
   secret: 'This is a secret key for the application',
   resave: false,
   saveUninitialized: false
 }));
-mongoose.connect('mongodb://localhost/blog');
+mongoose.connect(databaseURL);
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());

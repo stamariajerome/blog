@@ -2,11 +2,14 @@
 <div class="container">
   <div class="panel panel-default">
     <div class="panel-heading">
+        <form action="/blog/<%= post._id %>/?_method=DELETE" method="post">
+          <button class="btn btn-danger pull-right" type="submit">Remove</button>
+        </form>
         <a class="btn btn-warning pull-right" href="/blog/<%= post._id %>/edit">edit</a>
         <h3><%= post.title %></h3>
     </div>
     <div class="panel-body">
-        <p class="post-message"><%= post.message %></p>
+        <p class="post-message"><%- post.message %></p>
         <hr>
         <!-- Date/Time -->
         <p><span class="glyphicon glyphicon-time"></span>Posted on <%= post.date %></p>

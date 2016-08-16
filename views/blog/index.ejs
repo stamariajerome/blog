@@ -19,12 +19,11 @@
               <p><span class="glyphicon glyphicon-time"></span>Posted on <%= posts[i].date %></p>
               <hr>
               <!-- Post Content -->
-              <p class="message"><%= posts[i].message %></p>
+              <p class="message"><%- posts[i].message %></p>
               <p class="expanded-message"><%= posts[i].message %></p>
               <button class="btn btn-link view-more-link">View more</button>
               <% } %>
             </div>
-
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
 

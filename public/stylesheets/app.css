@@ -1,17 +1,33 @@
+
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 70px;
+    background: linear-gradient(to right, #6a3093, #a044ff);
+    font-family: 'Open-sans', 'Helevetica', sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
 }
 
-footer {
-    margin: 50px 0;
+.navbar {
+  background: rgba(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  font-size: 14px;
+}
+
+.main {
+  background-color: #fff;
 }
 
 .message{
-  display: inline;
+  display: inline
 }
 
 .view-more-link {
   padding: 0;
   border: 0;
   display: block;
+}
+
+footer {
+    margin: 50px 0;
 }

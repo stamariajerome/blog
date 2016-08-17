@@ -3,15 +3,15 @@ var moment = require('moment');
 
 var postSchema = mongoose.Schema({
   title: String,
-  author: {
-    type: String,
-    default: 'Anonymous'
-  },
-  content: String,
-  date: {
-    type: String
-  },
+  date: String,
   message: String,
+  author: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    username: String
+  }
 });
 
 module.exports = mongoose.model('Post', postSchema);

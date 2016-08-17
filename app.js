@@ -43,7 +43,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 // TODO make this session
 app.use(function(req, res, next) {
-  console.log(req.user);
+  res.locals.currentUser = req.user;
   next();
 });
 
@@ -77,6 +77,8 @@ app.post('/blog', function(req, res) {
       console.log(err);
     } else {
       newPost.date = moment(newPost.date).format('LLLL');
+      newPost.author.username = req.user.username;
+      newPost.author.id = req.user._id;
       newPost.save();
       res.redirect('/blog');
     }
@@ -151,12 +153,18 @@ app.post('/register', function(req, res) {
   User.register(new User({username: req.body.username}), req.body.password, function(err, newUser) {
     if(err) {
       console.log(err);
+      res.redirect('/register');
     } else {
       passport.authenticate('local')(req, res, function() {
         res.redirect('/blog');
       });
     }
   });
+});
+
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/blog');
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
